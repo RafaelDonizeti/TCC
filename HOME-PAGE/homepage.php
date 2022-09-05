@@ -22,7 +22,7 @@
                  <img class ="w-25 p-3" src=images/add_icon.png class="card-img-top" alt="...">
                  <div class="card-body">
                     <p class="card-text"></p>
-                    <a href="/Aulasphp/TCC/CADASTRO_DE_USUARIOS/cadastroUsuario.html" class="btn btn-primary">Cadastrar Usuário</a>
+                    <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_USUARIOS/cadastroUsuario.php" class="btn btn-primary">Cadastrar Usuário</a>
                  </div>
               </div>
            </div>
@@ -32,7 +32,7 @@
                  <img class ="w-25 p-3" src=images/add_imovel.png class="card-img-top" alt="...">
                  <div class="card-body">
                     <p class="card-text"></p>
-                    <a href="/Aulasphp/TCC/CADASTRO_DE_IMOVEIS/cadastroImovel.php" class="btn btn-primary">Cadastrar Imóveis</a>
+                    <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_IMOVEIS/cadastroImovel.php" class="btn btn-primary">Cadastrar Imóveis</a>
                  </div>
               </div>
            </div>
@@ -42,7 +42,7 @@
                  <img class ="w-25 p-3" src=images/add_bloco.png class="card-img-top" alt="...">
                  <div class="card-body">
                     <p class="card-text"></p>
-                    <a href="/Aulasphp/TCC/CADASTRO_DE_BLOCOS/cadastroBlocos.php" class="btn btn-primary">Cadastrar Blocos</a>
+                    <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_BLOCOS/cadastroBlocos.php" class="btn btn-primary">Cadastrar Blocos</a>
                  </div>
               </div>
            </div>
@@ -52,7 +52,7 @@
                <img class ="w-25 p-3" src=images/add_local.png class="card-img-top" alt="...">
                <div class="card-body">
                   <p class="card-text"></p>
-                  <a href="/Aulasphp/TCC/CADASTRO_DE_LOCAIS/cadastroLocais.php" class="btn btn-primary">Cadastrar Locais</a>
+                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_LOCAIS/cadastroLocais.php" class="btn btn-primary">Cadastrar Locais</a>
                </div>
             </div>
          </div>
