@@ -16,6 +16,12 @@ $resultadob = array(); // Cria um array para receber o resultado
 $queryb = "select id_bloco, bloco from blocos"; // Expressão SQL que irá ser executada
 $resultb = mysqli_query($con, $queryb); // Executa a consulta com base na query
 $resultadob = $resultb->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+
+$resultados = array(); // Cria um array para receber o resultado
+$querys = "SELECT id_situacao, situacao from situacoes"; // Expressão SQL que irá ser executada
+$results = mysqli_query($con, $querys); // Executa a consulta com base na query
+$resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+
 ?>
 
 
@@ -50,6 +56,14 @@ $resultadob = $resultb->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </option>
                         </select> <br>
 
+                        <label> Situação: </label> <br />
+                        <select name="situacao" class="form-select">
+                            <option>Selecione a situação do imóvel</option>
+                            <?php foreach ($resultados as $row) { ?>
+                                <option value="<?php echo $row['id_situacao'] ?>"> <?php echo $row['situacao'] ?> </option>
+                            <?php     } ?>
+                        </select> <br />
+
                         <label> Usúario: </label> <br />
                         <select name="usuario" class="form-select">
                             <option>Selecione o usuário correspondente</option>
@@ -58,8 +72,7 @@ $resultadob = $resultb->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                             <?php     } ?>
                         </select> <br />
 
-                        <label> Situação: </label> <br />
-                        <input type="text" class="form-control" name="situacao" size="40"> <br />
+                       
                     </div>
 
 

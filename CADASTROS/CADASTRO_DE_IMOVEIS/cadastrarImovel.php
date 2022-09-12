@@ -13,7 +13,7 @@ if ((!$con)) {
 		mysqli_connect_errno();
 }
 
-$sql = "insert into imoveis (numero_imovel,id_bloco, id_usuario_fk, situacao )
+$sql = "insert into imoveis (numero_imovel,id_bloco_fk, id_usuario_fk, situacao )
 	        values  ('$numero','$bloco','$usuario','$situacao')";
 mysqli_query($con, $sql);
 mysqli_close($con);

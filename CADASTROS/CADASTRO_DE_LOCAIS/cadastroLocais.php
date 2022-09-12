@@ -62,7 +62,7 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         <?php foreach ($resultado as $row) { ?>
           <tr>
 
-            <td><?php echo $row['nome_local']; ?> </td>
+            <td><?php echo ucwords( $row['nome_local']); ?> </td>
 
             <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaLocal.php?id=<?php echo $row['id_local']; ?>';}" class="btn btn-danger"> Deletar </a> </td>
           <?php   } ?>
