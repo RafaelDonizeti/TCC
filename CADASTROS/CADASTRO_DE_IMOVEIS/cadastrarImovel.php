@@ -3,7 +3,6 @@
 
 $numero = $_GET["numero"];
 $bloco = $_GET["bloco"];
-$usuario = $_GET["usuario"];
 $situacao = $_GET["situacao"];
 
 $con = mysqli_connect("localhost", "root", "", "tcc");
@@ -13,11 +12,11 @@ if ((!$con)) {
 		mysqli_connect_errno();
 }
 
-$sql = "insert into imoveis (numero_imovel,id_bloco_fk, id_usuario_fk, situacao )
-	        values  ('$numero','$bloco','$usuario','$situacao')";
+$sql = "insert into imoveis (numero_imovel,id_bloco_fk, id_situacao_fk )
+	        values  ('$numero','$bloco','$situacao')";
 mysqli_query($con, $sql);
 mysqli_close($con);
 
 if (($sql)) {
-	header("Location: consultaUsuarios.php");
+	header("Location: cadastroImovel.php");
 };

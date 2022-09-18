@@ -6,7 +6,7 @@ $email = $_GET["email"];
 $tipo = $_GET["tipo"];
 $senha = $_GET["senha"];
 $imovel = $_GET["imovel"];
-$bloco = $_GET["bloco"];
+
 
 	$con = mysqli_connect ( "localhost", "root","","tcc");
 
@@ -15,8 +15,8 @@ $bloco = $_GET["bloco"];
 		mysqli_connect_errno();
 	}
 	
-	$sql = "insert into usuarios (nome_usuario, telefone_usuario, email_usuario, tipo_usuario, senha, imovel_usuario, bloco_usuario)
-				values  ('$nome','$telefone','$email','$tipo','$senha','$imovel','$bloco')";
+	$sql = "insert into usuarios (nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, senha, imovel_usuario)
+				values  ('$nome','$telefone','$email','$tipo','$senha','$imovel')";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 

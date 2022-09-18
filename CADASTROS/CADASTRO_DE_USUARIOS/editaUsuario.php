@@ -9,7 +9,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 	}
 
     $resultado = array(); // Cria um array para receber o resultado
-	$query = "select id_usuario, nome_usuario, telefone_usuario,email_usuario,tipo_usuario,imovel_usuario, bloco_usuario from usuarios where id_usuario = $id_usuario "; // Expressão SQL que irá ser executada
+	$query = "select id_usuario, nome_usuario, telefone_usuario,email_usuario,tipo_usuario,imovel_usuario from usuarios where id_usuario = $id_usuario "; // Expressão SQL que irá ser executada
 	$result = mysqli_query($con,$query); // Executa a consulta com base na query
 	$resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
@@ -45,8 +45,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 										<input type = "text" class="form-control" name = "tipo" value = <?php echo $row['tipo_usuario']; ?>><br>
 										<label> Imóvel:</label>
 										<input type = "text" class="form-control" name = "imovel" value = <?php echo $row['imovel_usuario']; ?>><br>
-										<label> Bloco:</label>
-										<input type = "text" class="form-control" name = "bloco" value = <?php echo $row['bloco_usuario']; ?>><br>
+										
 									</div>	
 								</tr>
 						
@@ -56,7 +55,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 						
 				<a 
 				href="consultaUsuarios.php">
-				<input type="submit" value="atualizar" class="btn btn-success">
+				<input type="submit" value="Atualizar" class="btn btn-success">
 				<input type="button" value="Cancelar" class="btn btn-info">
 				</a>
 			

@@ -8,7 +8,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 	}
 
 	$resultado = array(); // Cria um array para receber o resultado
-	$query = "select id_usuario, nome_usuario, telefone_usuario, email_usuario, tipo_usuario, imovel_usuario, bloco_usuario from usuarios "; // Expressão SQL que irá ser executada
+	$query = "select id_usuario, nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, imovel_usuario from usuarios  "; // Expressão SQL que irá ser executada
 	$result = mysqli_query($con,$query); // Executa a consulta com base na query
     $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 						
@@ -36,8 +36,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 						<th>Email</th>
 						<th>Tipo</th>
 						<th>Imóvel</th>
-						<th>Bloco</th>
-                        <th colspan="3 ">Ações</th>
+                        <th colspan="3">Ações</th>
 						
 					</tr>
 							
@@ -47,9 +46,8 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 								<td><?php echo $row['nome_usuario']; ?> </td> 
 								<td><?php echo $row['telefone_usuario']; ?></td>
 								<td><?php echo $row['email_usuario']; ?></td>
-                                <td><?php echo $row['tipo_usuario']; ?></td>
+                                <td><?php echo $row['tipo_usuario_fk']; ?></td>
 								<td><?php echo $row['imovel_usuario']; ?></td>
-								<td><?php echo $row['bloco_usuario']; ?></td>
 								<td ><a href = "editaUsuario.php?id=<?php echo $row['id_usuario']; ?>"> Editar </a> </td>
 								<td ><a href = "javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaUsuario.php?id=<?php echo $row['id_usuario']; ?>';}" > Deletar </a> </td>
 							</tr>

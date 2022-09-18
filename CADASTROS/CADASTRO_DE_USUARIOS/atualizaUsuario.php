@@ -5,7 +5,7 @@ $telefone = $_GET["telefone"];
 $email = $_GET["email"];
 $tipo = $_GET["tipo"];
 $imovel = $_GET["imovel"];
-$bloco = $_GET["bloco"];
+
 	
 	$con = mysqli_connect ( "localhost", "root","","tcc");
 
@@ -14,7 +14,7 @@ $bloco = $_GET["bloco"];
 		mysqli_connect_errno();
 	}
 	
-	$sql = "update usuarios set nome_usuario = '$nome', telefone_usuario = '$telefone', email_usuario = '$email', tipo_usuario = '$tipo', imovel_usuario ='$imovel', bloco_usuario = '$bloco' where id_usuario = '$id_usuario'" ;
+	$sql = "update usuarios set nome_usuario = '$nome', telefone_usuario = '$telefone', email_usuario = '$email', tipo_usuario = '$tipo', imovel_usuario ='$imovel' where id_usuario = '$id_usuario'" ;
 	$resultado = mysqli_query($con,$sql);
 	
 	if ($resultado){

@@ -1,3 +1,4 @@
+<meta charset="UTF-8">
 <?php
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
@@ -7,10 +8,14 @@ if ((!$con)) {
 }
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT descricao_recado, tipo_recado from mural_de_recados INNER JOIN tipos_recados on tipo_recado_fk = id_tipo_recado"; // Expressão SQL que irá ser executada
+$query = "SELECT descricao_recado, tipo_recado,data_recado from mural_de_recados INNER JOIN tipos_recados on tipo_recado_fk = id_tipo_recado ORDER BY data_recado desc;"; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
+$resultadoTR = array(); // Cria um array para receber o resultado
+$queryTR = "SELECT id_tipo_recado, tipo_recado from tipos_recados "; // Expressão SQL que irá ser executada
+$resultTR = mysqli_query($con, $queryTR); // Executa a consulta com base na query
+$resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 ?>
 
@@ -51,8 +56,8 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <label>Qual o tipo de recado?</label>
             <select name="tipos" id="" class="form-select">
               <option value="">
-                <?php foreach ($resultadob as $row) { ?>
-              <option value="<?php echo $row['id_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
+                <?php foreach ($resultadoTR as $row) { ?>
+                  <option value="<?php echo $row['id_tipo_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
             <?php     } ?>
             </select><br>
             <label> Recado</label>

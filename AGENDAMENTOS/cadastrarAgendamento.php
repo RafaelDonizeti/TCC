@@ -14,9 +14,8 @@ var_dump($data);
 		mysqli_connect_errno();
 	}
 	
-  
 	$sql = "insert into agendamentos (id_local_fk, data_agendamento )
-	        values  ('$local', $data)";
+	        values  ('$local','$data')";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 

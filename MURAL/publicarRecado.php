@@ -1,8 +1,8 @@
 <?php 
- 
+ $con = mysqli_connect ( "localhost", "root","","tcc");
  $recado = $_GET["recado"];
  $tipos =$_GET["tipos"];
- $con = mysqli_connect ( "localhost", "root","","tcc");
+ 
  
  if ((!$con)) {
     echo "erro ao conectar na base de dados: ". 
@@ -15,7 +15,7 @@ $sql = "insert into mural_de_recados (descricao_recado, tipo_recado_fk)
 		mysqli_close($con);
 
 				if (($sql))	{
-					echo "Recado Publicado";
+					header("Location: muralRecados.php");
 	};
 									
   ?>
