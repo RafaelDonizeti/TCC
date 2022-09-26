@@ -8,7 +8,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 	}
 
 	$resultado = array(); // Cria um array para receber o resultado
-	$query = "select id_usuario, nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, imovel_usuario from usuarios  "; // Expressão SQL que irá ser executada
+	$query = "SELECT id_usuario, nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, id_imovel_fk,tipo_usuario,numero_imovel from usuarios inner join tipos_usuarios on id_tipo_usuario = tipo_usuario_fk inner join imoveis on id_imovel_fk = id_imovel"; // Expressão SQL que irá ser executada
 	$result = mysqli_query($con,$query); // Executa a consulta com base na query
     $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 						
@@ -21,6 +21,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 		<meta charset ="utf-8"/>
 		<title> Consulta de Usuários </title>
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		<?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 		
 	</head>
 
@@ -46,8 +47,8 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 								<td><?php echo $row['nome_usuario']; ?> </td> 
 								<td><?php echo $row['telefone_usuario']; ?></td>
 								<td><?php echo $row['email_usuario']; ?></td>
-                                <td><?php echo $row['tipo_usuario_fk']; ?></td>
-								<td><?php echo $row['imovel_usuario']; ?></td>
+                                <td><?php echo $row['tipo_usuario']; ?></td>
+								<td><?php echo $row['numero_imovel']; ?></td>
 								<td ><a href = "editaUsuario.php?id=<?php echo $row['id_usuario']; ?>"> Editar </a> </td>
 								<td ><a href = "javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaUsuario.php?id=<?php echo $row['id_usuario']; ?>';}" > Deletar </a> </td>
 							</tr>
@@ -57,14 +58,12 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 						
 				</table>	
 				
-					<a 
-				href=""><br>
-				<input type="button" value="botao para cadastrar novo usuario ">
-				</a>
 				
 			</div>
 		</div>
 		
+		<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 	</body>
 
 </html>		

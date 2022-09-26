@@ -29,6 +29,23 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#calendar").datepicker({
+                dateFormat: 'dd/mm/yy',
+                dayNames: ['Domingo', 'Segunda', 'Terça', 'Quarta', 'Quinta', 'Sexta', 'Sábado', 'Domingo'],
+                dayNamesMin: ['D', 'S', 'T', 'Q', 'Q', 'S', 'S', 'D'],
+                dayNamesShort: ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'],
+                monthNames: ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'],
+                monthNamesShort: ['Jan', 'Fev', 'Mar', 'Abr', 'Mai', 'Jun', 'Jul', 'Ago', 'Set', 'Out', 'Nov', 'Dez'],
+                minDate: new Date(<?php $hj ?>)
+            });
+        });
+    </script>
     <title>Agendamentos </title>
 
     <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
@@ -57,7 +74,7 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </select><br>
 
                         <label>INFORME O DIA </label>
-                        <input type="date" name="data_agendamento" class="form-select">
+                        <input type="text" id="calendar" name="data_agendamento" class="form-select" autocomplete="off">
                     </div><br>
                     <input type="submit" value="Cadastrar" class="btn btn-primary">
                     <input type="reset" value="Limpar" class="btn btn-secondary">
@@ -77,16 +94,18 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <?php foreach ($resultado as $row) { ?>
                     <tr>
                         <td><?php echo $row['nome_local']; ?> </td>
-                        <td><?php echo date ("d/m/Y", strtotime ($row['data_agendamento'])); ?> </td>
+                        <td><?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?> </td>
                         <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaBloco.php?id=<?php echo $row['id_agendamento']; ?>';}" class=""> Deletar </a> </td>
                     <?php     } ?>
 
-                    
+
         </div>
 
 
 
 
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
 </body>
 

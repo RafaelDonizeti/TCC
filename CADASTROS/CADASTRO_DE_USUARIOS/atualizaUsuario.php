@@ -14,7 +14,7 @@ $imovel = $_GET["imovel"];
 		mysqli_connect_errno();
 	}
 	
-	$sql = "update usuarios set nome_usuario = '$nome', telefone_usuario = '$telefone', email_usuario = '$email', tipo_usuario = '$tipo', imovel_usuario ='$imovel' where id_usuario = '$id_usuario'" ;
+	$sql = "update usuarios set nome_usuario = '$nome', telefone_usuario = '$telefone', email_usuario = '$email', tipo_usuario_fk = '$tipo', id_imovel_fk ='$imovel' where id_usuario = '$id_usuario'" ;
 	$resultado = mysqli_query($con,$sql);
 	
 	if ($resultado){

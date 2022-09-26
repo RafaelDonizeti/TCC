@@ -1,4 +1,5 @@
 <?php
+session_start();
 //alterar o método para post futuramente
 $nome = $_GET["nome"];
 $telefone = $_GET["telefone"];
@@ -15,13 +16,14 @@ $imovel = $_GET["imovel"];
 		mysqli_connect_errno();
 	}
 	
-	$sql = "insert into usuarios (nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, senha, imovel_usuario)
+	$sql = "insert into usuarios (nome_usuario, telefone_usuario, email_usuario, tipo_usuario_fk, senha, id_imovel_fk)
 				values  ('$nome','$telefone','$email','$tipo','$senha','$imovel')";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 
 				if (($sql))	{
-					header("Location: consultaUsuarios.php");
+					$_SESSION['status'] = "Usuário Cadastrado com Sucesso";
+					header("Location: cadastroUsuario.php");
 	};
 									
 

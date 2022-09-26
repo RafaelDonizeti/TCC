@@ -5,8 +5,9 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 
 $local = $_GET["locais"];
 $data = $_GET["data_agendamento"];
+$datasb = array_reverse(explode("/", $data));
+$datasb = implode("-", $datasb);
 
-var_dump($data);
 
 
 	if ((!$con)) {
@@ -15,7 +16,7 @@ var_dump($data);
 	}
 	
 	$sql = "insert into agendamentos (id_local_fk, data_agendamento )
-	        values  ('$local','$data')";
+	        values  ('$local','$datasb')";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 
