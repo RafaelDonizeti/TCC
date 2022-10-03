@@ -17,7 +17,7 @@ $bloco = $_GET["bloco"];
 				mysqli_close($con);
 
 				if (($sql))	{
-					echo "bloco cadastrado";
+					header('Location: cadastroBlocos.php');
 	};
 									
 

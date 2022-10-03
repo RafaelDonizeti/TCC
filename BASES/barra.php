@@ -17,10 +17,13 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
          </div>
       </div>
-
       <a class="navbar-brand" href="/Aulasphp/TCC">Index PHP</a>
+      <a class="navbar-brand" href="/Aulasphp/TCC/LOGIN/sair.php">Sair</a>
+  
      
-      <a class="navbar-brand position-absolute top-5 end-0" href="#">Sair</a>
+    
+      
+
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
          <span class="navbar-toggler-icon"></span>
       </button>

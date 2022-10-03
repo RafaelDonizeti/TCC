@@ -95,7 +95,8 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <tr>
                         <td><?php echo $row['nome_local']; ?> </td>
                         <td><?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?> </td>
-                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaBloco.php?id=<?php echo $row['id_agendamento']; ?>';}" class=""> Deletar </a> </td>
+                        <td ><a href = "editaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>"> Editar </a> </td>
+                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class=""> Deletar </a> </td>
                     <?php     } ?>
 
 

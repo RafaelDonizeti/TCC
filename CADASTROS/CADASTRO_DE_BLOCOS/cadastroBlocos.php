@@ -33,14 +33,14 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
   <div class="row">
     <div class="col-md-4">
-      <form action="cadastrarLocal.php" method="get">
+      <form action="cadastrarBlocos.php" method="get">
 
         <div class="ms-5 mt-5">
           <h3>CADASTRE AQUI OS BLOCOS</h3>
           <h3>DO CONDOMÍNIO</h3>
           <div>
-            <label> NOME DO LOCAL</label> <br />
-            <input type="text" class="form-control border border-1 border-primary" name="nome_local"> <br />
+            <label> Nome do Bloco</label> <br />
+            <input type="text" class="form-control border border-1 border-primary" name="bloco"> <br />
             <input type="submit" value="Cadastrar" class="btn btn-primary">
             <input type="reset" value="Limpar" class="btn btn-secondary">
           </div>
@@ -60,8 +60,8 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
         <?php foreach ($resultado as $row) { ?>
           <tr>
-            <td><?php echo $row['id_bloco']; ?> </td>
-            <td><?php echo $row['bloco']; ?> </td>
+            <td><?php echo ucwords( $row['id_bloco']); ?> </td>
+            <td><?php echo ucwords( $row['bloco']); ?> </td>
             <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaBloco.php?id=<?php echo $row['id_bloco']; ?>';}" class=""> Deletar </a> </td>
           <?php   } ?>
           </tr>

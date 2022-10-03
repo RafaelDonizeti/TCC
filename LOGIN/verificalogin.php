@@ -1,24 +1,32 @@
 <?php
-
-$usuario = $_GET["usuario"];
+session_start();
+$email = $_GET["email"];
 $senha = $_GET["senha"];
 
 
-$con = mysqli_connect ( "localhost", "root","","loja_de_veiculos");
+$con = mysqli_connect ( "localhost", "root","","tcc");
 
 	if ((!$con)) {
 		echo "erro ao conectar na base de dados: ". 
 		mysqli_connect_errno();
 	}
 	
-	$sql = "select * from clientes where usuario = '$usuario' and senha = '$senha'";
+	$sql = "select * from usuarios where email_usuario = '$email' and senha = '$senha'";
 	$verifica = mysqli_query($con,$sql);
 		
-	if (mysqli_num_rows ($verifica)<= 0){
-		echo "Usuario ou senha incorretos ";
-	} else{
+	if (mysqli_num_rows ($verifica) == 1){
+		$resultado_sessao = mysqli_fetch_assoc($verifica);
+		$_SESSION['email'] = $email;
+		$_SESSION['senha'] = $senha;
+		$_SESSION['nome_usuario'] = $resultado_sessao['nome_usuario'];
+		$_SESSION['id_usuario'] = $resultado_sessao['id_usuario'];
+		$_SESSION['tipo_usuario_fk'] = $resultado_sessao['tipo_usuario_fk'];
 		
-		header("Location: consultacarros.html");
+		if ( $_SESSION['tipo_usuario_fk'] < 3 ){
+			header('location: /Aulasphp/TCC/MURAL/muralRecadosUser.php');
+		} else header('location: /Aulasphp/TCC/HOME_CADASTROS/homeCadastros.php');
+	} else{
+		unset($_SESSION['email']);
+		unset($_SESSION['senha']);
+		echo"usuario ou senha incorretos";
 	}
-
-?>
