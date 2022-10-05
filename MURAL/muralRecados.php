@@ -59,18 +59,18 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         <div class="modal-body">
           <form action="publicarRecado.php" method="get">
             <label>Qual o tipo de recado?</label>
-            <select name="tipos" id="" class="form-select">
-              <option value="">
-                <?php foreach ($resultadoTR as $row) { ?>
-                  <option value="<?php echo $row['id_tipo_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
-            <?php     } ?>
+            <select name="tipos" id="" class="form-select" required>
+              <option value="">Selecione Um Tipo de Recado... </option>
+              <?php foreach ($resultadoTR as $row) { ?>
+                <option value="<?php echo $row['id_tipo_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
+              <?php     } ?>
             </select><br>
             <label> Recado</label>
-            <textarea name="recado" class="form-control" cols="" rows="12"></textarea>
+            <textarea name="recado" class="form-control" cols="" rows="12" required></textarea>
 
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Cancelar</button>
           <button type="submit" class="btn btn-primary">Publicar</button>
           </form>
         </div>
@@ -79,9 +79,9 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
   </div>
 
   <?php foreach ($resultado as $row) { ?>
-    <div class="container mt-5">
+    <div class="container mt-5 ">
       <div class="card border-secondary">
-        <div class="card-header"><?php echo $row['tipo_recado'] ?></div> 
+        <div class="card-header"><?php echo $row['tipo_recado'] ?></div>
         <div class="card-body">
           <blockquote class="blockquote mb-0">
 

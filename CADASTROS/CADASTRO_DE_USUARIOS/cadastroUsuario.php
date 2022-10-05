@@ -46,13 +46,13 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <div class="row">
                     <div class="col-md-6">
                         <label> Nome: </label> <br />
-                        <input type="text" class="form-control" name="nome" required> <br />
+                        <input type="text" class="form-control border-secondary" name="nome" required> <br />
 
                         <label> Telefone: </label> <br />
-                        <input type="text" class="form-control" name="telefone" maxlength="14" required> <br />
+                        <input type="text" class="form-control border-secondary" name="telefone" maxlength="14" required> <br />
 
                         <label> E-mail: </label> <br />
-                        <input type="email" class="form-control" name="email" required> <br />
+                        <input type="email" class="form-control border-secondary" name="email" required> <br />
 
 
                     </div>
@@ -60,7 +60,7 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <div class="col-md-6">
 
                         <label> Tipo: </label> <br />
-                        <select name="tipo" class="form-select" required>
+                        <select name="tipo" class="form-select border-secondary" required>
                             <option value="">Selecione o tipo de usuário</option>
                             <?php foreach ($resultado as $row) { ?>
                                 <option value="<?php echo $row['id_tipo_usuario'] ?>"> <?php echo $row['tipo_usuario'] ?> </option>
@@ -68,7 +68,7 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </select> <br />
 
                         <label> Imóvel: </label> <br />
-                        <select name="imovel" class="form-select" required>
+                        <select name="imovel" class="form-select border-secondary" required>
                             <option value="">Selecione o Imóvel...</option>
                             <?php foreach ($resultadoNI as $rowNI) { ?>
                                 <option value="<?php echo $rowNI['id_imovel'] ?>"> <?php echo $rowNI['numero_imovel'] ?> </option>
@@ -77,12 +77,12 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </select>
                         <br>
                         <label> Senha: </label> <br />
-                        <input type="text" class="form-control" name="senha" required> <br />
+                        <input type="text" class="form-control border-secondary" name="senha" required> <br />
                     </div>
 
                 </div>
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
-                <input type="reset" value="Limpar" class="btn btn-secondary">
+                <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
 
 
         </form>

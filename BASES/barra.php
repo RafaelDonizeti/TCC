@@ -17,7 +17,7 @@
             <li><a class="dropdown-item" href="#">Something else here</a></li>
          </div>
       </div>
-      <a class="navbar-brand" href="/Aulasphp/TCC">Index PHP</a>
+      
       <a class="navbar-brand" href="/Aulasphp/TCC/LOGIN/sair.php">Sair</a>
   
      

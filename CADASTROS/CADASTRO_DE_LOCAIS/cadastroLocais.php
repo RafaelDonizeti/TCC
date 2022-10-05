@@ -41,10 +41,10 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
           <h3>CADASTRE AQUI OS LOCAIS</h3>
           <h3>DO CONDOMÍNIO</h3>
           <div>
-            <label> NOME DO LOCAL</label> <br />
-            <input type="text" class="form-control border border-1 border-primary" name="nome_local" autocomplete="off"> <br />
+            <label> Nome do Local:</label> <br />
+            <input type="text" class="form-control border border-1 border-secondary" name="nome_local" autocomplete="off"> <br />
             <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Limpar" class="btn btn-secondary">
+            <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
           </div>
 
         </div>
@@ -64,7 +64,7 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
             <td><?php echo ucwords( $row['nome_local']); ?> </td>
 
-            <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaLocal.php?id=<?php echo $row['id_local']; ?>';}" class="btn btn-danger"> Deletar </a> </td>
+            <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaLocal.php?id=<?php echo $row['id_local']; ?>';}" class="text-danger"> Deletar </a> </td>
           <?php   } ?>
 
 

@@ -7,7 +7,10 @@ if ((!$con)) {
 }
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_local, nome_local,data_agendamento,id_agendamento from locais inner join agendamentos on id_local = id_local_fk "; // Expressão SQL que irá ser executada
+$query = "SELECT id_local, nome_local,data_agendamento,id_agendamento, nome_usuario
+from locais 
+inner join agendamentos on id_local = id_local_fk
+inner join usuarios on id_usuario = id_usuario_fk ORDER by data_agendamento desc; "; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
@@ -16,6 +19,11 @@ $resultadol = array(); // Cria um array para receber o resultado
 $queryl = "SELECT id_local, nome_local from locais "; // Expressão SQL que irá ser executada
 $resultl = mysqli_query($con, $queryl); // Executa a consulta com base na query
 $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+
+$resultadoUsers = array(); // Cria um array para receber o resultado
+$queryUsers = "SELECT id_usuario, nome_usuario from usuarios "; // Expressão SQL que irá ser executada
+$resultUsers = mysqli_query($con, $queryUsers); // Executa a consulta com base na query
+$resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 ?>
 
 
@@ -61,23 +69,32 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <form action="cadastrarAgendamento.php" method="get">
 
                 <div class="ms-5 mt-5">
-                    <h3>AGENDE AQUI O DIA PARA</h3>
+                    <h3>AGENDE AQUI OS DIAS PARA</h3>
                     <h3>USAR OS ESPAÇOS DO CONDOMÍNIO</h3>
                     <div>
-                        <label> INFORME QUAL O LOCAL</label> <br />
-                        <select name="locais" class="form-select">
-                            <option>Escolha um local</option>
+                        <label> Informe o Local:</label> <br />
+                        <select name="locais" class="form-select border-secondary" required>
+                            <option value="">Escolha um local</option>
                             <?php foreach ($resultadol as $row) { ?>
                                 <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
                             <?php     } ?>
                             </option>
                         </select><br>
 
-                        <label>INFORME O DIA </label>
-                        <input type="text" id="calendar" name="data_agendamento" class="form-select" autocomplete="off">
+                        <label>Informe o Dia: </label>
+                        <input type="text" id="calendar" name="data_agendamento" class="form-select border-secondary" autocomplete="off" placeholder="Informe o Dia"><br>
+
+                        <label>Quem Fará Uso? </label>
+                        <select name="usuarios" class="form-select border-secondary" required>
+                            <option value="">Selecione o Usuário</option>
+                            <?php foreach ($resultadoUsers as $row) { ?>
+                                <option value="<?php echo $row['id_usuario'] ?>"> <?php echo $row['nome_usuario'] ?> </option>
+                            <?php     } ?>
+                            </option>
+                        </select><br>
                     </div><br>
                     <input type="submit" value="Cadastrar" class="btn btn-primary">
-                    <input type="reset" value="Limpar" class="btn btn-secondary">
+                    <input type="reset" value="Limpar" class="btn btn-danger" formnovalidate>
                 </div>
             </form>
 
@@ -88,14 +105,18 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <tr>
                     <th> Local</th>
                     <th> Dia agendado</th>
+                    <th>Usuário </th>
                     <th> </th>
+                    <th></th>
                 </tr>
 
                 <?php foreach ($resultado as $row) { ?>
                     <tr>
-                        <td><?php echo $row['nome_local']; ?> </td>
+                        <td><?php echo ucwords($row['nome_local']); ?> </td>
                         <td><?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?> </td>
-                        <td ><a href = "editaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>"> Editar </a> </td>
+                        <td><?php echo ucwords($row['nome_usuario']); ?> </td>
+                        <td><a href="editaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>"> Editar </a> </td>
+                        
                         <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class=""> Deletar </a> </td>
                     <?php     } ?>
 
@@ -106,7 +127,7 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 
 </body>
 

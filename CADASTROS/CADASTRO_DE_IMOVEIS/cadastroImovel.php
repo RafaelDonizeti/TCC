@@ -44,7 +44,7 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 </head>
 
-<body>
+<body class="bg-">
 
 
     <div class="row">
@@ -54,10 +54,10 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <div class="ms-5 mt-5">
                     <h3> INFORME OS DADOS DO IMÓVEL : </h3>
                     <label> Número: </label> <br />
-                    <input type="number" class="form-control" name="numero" size="10"> <br />
+                    <input type="number" class="form-control border-secondary" name="numero" size="10" required> <br />
 
                     <label> Bloco: </label> <br />
-                    <select name="bloco" class="form-select">
+                    <select name="bloco" class="form-select border-secondary" required>
                         <option value="">
                             <?php foreach ($resultadob as $row) { ?>
                         <option value="<?php echo $row['id_bloco'] ?>"> <?php echo $row['bloco'] ?> </option>
@@ -66,14 +66,14 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     </select> <br>
 
                     <label> Situação: </label> <br />
-                    <select name="situacao" class="form-select">
-                        <option selected>Selecione a situação do imóvel</option>
+                    <select name="situacao" class="form-select border-secondary" required>
+                        <option value="">Selecione a situação do imóvel</option>
                         <?php foreach ($resultados as $row) { ?>
                             <option value="<?php echo $row['id_situacao_imovel'] ?>"> <?php echo $row['situacao_imovel'] ?> </option>
                         <?php     } ?>
                     </select> <br />
                     <input type="submit" value="Cadastrar" class="btn btn-primary">
-                    <input type="reset" value="Limpar" class="btn btn-secondary">
+                    <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
                 </div>
 
 
@@ -81,22 +81,24 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         </div>
 
         <div class="col mt-5 mx-5">
-            <table class="table table-bordered  ">
+            <table class="table table-bordered   ">
                 <tr>
-
+                  
                     <th>NÚMERO</th>
                     <th>BLOCO</th>
                     <th>SITUAÇÃO</th>
+                    <th></th>
+                    <th></th>
                 </tr>
 
                 <?php foreach ($resultadoIM as $row) { ?>
                     <tr>
-                        <td><?php echo $row['id_imovel']; ?> </td>
+                        
                         <td><?php echo $row['numero_imovel']; ?> </td>
-                        <td><?php echo $row['bloco']; ?> </td>
+                        <td><?php echo ucwords( $row['bloco']); ?> </td>
                         <td><?php echo $row['situacao_imovel']; ?> </td>
                         <td><a href="editaImovel.php?id=<?php echo $row['id_imovel']; ?>"> Editar </a> </td>
-                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaImovel.php?id=<?php echo $row['id_imovel']; ?>';}" class=""> Deletar </a> </td>
+                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaImovel.php?id=<?php echo $row['id_imovel']; ?>';}" class="text-danger"> Deletar </a> </td>
                     <?php   } ?>
                     </tr>
 

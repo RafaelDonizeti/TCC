@@ -5,6 +5,7 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 
 $local = $_GET["locais"];
 $data = $_GET["data_agendamento"];
+$usuario = $_GET['usuarios'];
 $datasb = array_reverse(explode("/", $data));
 $datasb = implode("-", $datasb);
 
@@ -15,8 +16,8 @@ $datasb = implode("-", $datasb);
 		mysqli_connect_errno();
 	}
 	
-	$sql = "insert into agendamentos (id_local_fk, data_agendamento )
-	        values  ('$local','$datasb')";
+	$sql = "insert into agendamentos (id_local_fk, data_agendamento, id_usuario_fk )
+	        values  ('$local','$datasb', $usuario)";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 

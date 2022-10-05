@@ -46,7 +46,7 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
    <div class="container-fluid">
      
      
-      <a class="navbar-brand" href="/Aulasphp/TCC">Index PHP</a>
+      
       <a class="navbar-brand" href="/Aulasphp/TCC/LOGIN/sair.php">Sair</a>
 
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
