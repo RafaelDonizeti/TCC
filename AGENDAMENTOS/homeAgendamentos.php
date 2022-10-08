@@ -94,7 +94,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </select><br>
                     </div><br>
                     <input type="submit" value="Cadastrar" class="btn btn-primary">
-                    <input type="reset" value="Limpar" class="btn btn-danger" formnovalidate>
+                    <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
                 </div>
             </form>
 
@@ -117,7 +117,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <td><?php echo ucwords($row['nome_usuario']); ?> </td>
                         <td><a href="editaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>"> Editar </a> </td>
                         
-                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class=""> Deletar </a> </td>
+                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class="text-danger"> Deletar </a> </td>
                     <?php     } ?>
 
 

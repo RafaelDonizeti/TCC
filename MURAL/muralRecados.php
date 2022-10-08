@@ -53,7 +53,7 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <div class="modal-dialog modal-xl">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Digite aqui seu recado</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Digite Aqui Seu Recado</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -65,7 +65,7 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <option value="<?php echo $row['id_tipo_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
               <?php     } ?>
             </select><br>
-            <label> Recado</label>
+            <label> Recado:</label>
             <textarea name="recado" class="form-control" cols="" rows="12" required></textarea>
 
         </div>

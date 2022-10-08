@@ -7,7 +7,7 @@
       <a class="navbar-brand" href="/Aulasphp/TCC/HOME_CADASTROS/homeCadastros.php">Cadastros</a>
       <a class="navbar-brand" href="/Aulasphp/TCC/AGENDAMENTOS/homeAgendamentos.php">Agendamentos</a>
       <a class="navbar-brand" href="/Aulasphp/TCC/MURAL/muralRecados.php">Mural</a>
-
+      <a class="navbar-brand" href="/Aulasphp/TCC/">Prestação de Contas</a>
       <div class="dropdown">
          <a class=" navbar-brand nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
             Consultas </a>
