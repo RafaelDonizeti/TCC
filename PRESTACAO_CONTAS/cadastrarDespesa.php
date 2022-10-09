@@ -4,6 +4,7 @@
 
 $despesa = $_GET["despesa"];
 $valor_despesa = $_GET["valor"];
+$conta = $_GET['tipo'];
 $data_despesa = date($_GET["data"]);
 $valorsv = explode(",",$valor_despesa);
 $valorsv = implode(".",$valorsv);
@@ -15,8 +16,8 @@ $valorsv = implode(".",$valorsv);
 		mysqli_connect_errno();
 	}
 	
-	$sql = "insert despesas (despesa,valor_despesa,data_despesa )
-	        values  ('$despesa','$valorsv','$data_despesa')";
+	$sql = "INSERT into despesas (despesa,valor_despesa,data_despesa,id_conta_fk )
+	        values  ('$despesa','$valorsv','$data_despesa','$conta')";
 				mysqli_query($con,$sql);
 				mysqli_close($con);
 

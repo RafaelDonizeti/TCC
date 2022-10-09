@@ -8,11 +8,19 @@ if ((!$con)) {
 }
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_despesa, despesa, valor_despesa, data_despesa 
+$query = "SELECT id_despesa, despesa, valor_despesa, data_despesa,id_conta,conta 
 from despesas 
+inner join contas on id_conta = id_conta_fk
 where id_despesa = $id_despesa "; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+
+
+//consulta dos tipos de contas
+$resultadoC = array(); // Cria um array para receber o resultado
+$queryC = "SELECT id_conta, conta from contas "; // Expressão SQL que irá ser executada
+$resultC = mysqli_query($con, $queryC); // Executa a consulta com base na query
+$resultadoC = $resultC->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 ?>
 
 <!DOCTYPE html>
@@ -55,15 +63,30 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <div>
                             <label> Despesa: </label> <br />
                             <input type="text" class="form-control border border-1 border-secondary" name="despesa" value="<?php echo $row['despesa']; ?>"> <br />
+                            <input type="hidden" name="id" value=<?php echo $row['id_despesa']; ?>>
+                            
                             <label> Valor: </label> <br />
                             <input type="text" class="form-control border border-1 border-secondary" name="valor" value="<?php echo number_format( $row['valor_despesa'], 2 ,',','.'); ?>"> <br />
+                            
+
                             <label> Data: </label> <br />
                             <input type="text" id="calendar" class="form-select border border-1 border-secondary" name="data" value="<?php echo date("d/m/Y", strtotime($row['data_despesa'])); ?>"> <br />
 
+                            <label> Tipo: </label> <br />
+                            <select name="conta" class="form-select border border-1 border-secondary"> 
+                                <option value="<?php echo $row['id_conta']; ?>"><?php echo $row['conta']; ?></option>
+                                <?php foreach ($resultadoC as $row) { ?>
+                                <option value="<?php echo $row['id_conta'] ?>"> <?php echo $row['conta'] ?> </option>
+                            <?php     } ?>
+                            </select><br>
+                           
+
                         </div>
-                        <input type="hidden" name="id" value=<?php echo $row['id_despesa']; ?>>
+                        
                         <input type="submit" value="Atualizar" class="btn btn-success">
                     </div>
+
+                    
                    
                 </form>
 

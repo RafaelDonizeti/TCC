@@ -45,9 +45,9 @@ $resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <div class="col-md-6">
                 <div>
                     <h5>Alterar Dados do Imóvel</h5><br />
-                    
 
-                    <input type="hidden" name="id" value=<?php echo $row['id_imovel'];?>>
+
+                    <input type="hidden" name="id" value=<?php echo $row['id_imovel']; ?>>
 
                     <label> Número:</label>
                     <input type="text" name="numero" value="<?php echo $row['numero_imovel']; ?>" class="form-control">
@@ -83,7 +83,7 @@ $resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 <?php     } ?>
 
                 </div><br>
-               
+
                 <input type="submit" value="Atualizar" class="btn btn-success">
 
             </div>

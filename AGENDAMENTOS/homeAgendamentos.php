@@ -103,8 +103,8 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         <div class="col mt-5 mx-5">
             <table class="table table-bordered  ">
                 <tr>
-                    <th> Local</th>
-                    <th> Dia agendado</th>
+                    <th>Local</th>
+                    <th>Dia agendado</th>
                     <th>Usuário </th>
                     <th> </th>
                     <th></th>
