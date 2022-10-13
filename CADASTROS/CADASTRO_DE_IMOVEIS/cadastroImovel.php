@@ -39,12 +39,14 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 <head>
     <meta charset="utf-8" />
     <title> Cadastro de Imóvel </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 
+   
+    <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 </head>
 
-<body class="bg-">
+<body>
 
 
     <div class="row">
@@ -80,29 +82,30 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             </form>
         </div>
 
-        <div class="col mt-5 mx-5">
-            <table class="table table-bordered   ">
-                <tr>
-                  
-                    <th>NÚMERO</th>
-                    <th>BLOCO</th>
-                    <th>SITUAÇÃO</th>
-                    <th></th>
-                    <th></th>
-                </tr>
+        <div class="table-responsive col mt-4 mx-5" id="">           
+                <table class="table table-bordered" id="tabela">
+                    <thead>
+                        <tr>
+                            <th>NÚMERO</th>
+                            <th>BLOCO</th>
+                            <th>SITUAÇÃO</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
 
-                <?php foreach ($resultadoIM as $row) { ?>
-                    <tr>
-                        
-                        <td><?php echo $row['numero_imovel']; ?> </td>
-                        <td><?php echo ucwords( $row['bloco']); ?> </td>
-                        <td><?php echo $row['situacao_imovel']; ?> </td>
-                        <td><a href="editaImovel.php?id=<?php echo $row['id_imovel']; ?>"> Editar </a> </td>
-                        <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaImovel.php?id=<?php echo $row['id_imovel']; ?>';}" class="text-danger"> Deletar </a> </td>
-                    <?php   } ?>
-                    </tr>
+                    <?php foreach ($resultadoIM as $row) { ?>
+                        <tr>
 
-            </table>
+                            <td><?php echo $row['numero_imovel']; ?> </td>
+                            <td><?php echo ucwords($row['bloco']); ?> </td>
+                            <td><?php echo $row['situacao_imovel']; ?> </td>
+                            <td><a href="editaImovel.php?id=<?php echo $row['id_imovel']; ?>"> Editar </a> </td>
+                            <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaImovel.php?id=<?php echo $row['id_imovel']; ?>';}" class="text-danger"> Deletar </a> </td>
+                        <?php   } ?>
+                        </tr>
+
+                </table>
         </div>
     </div>
 

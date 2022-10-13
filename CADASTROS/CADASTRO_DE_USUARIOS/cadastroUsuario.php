@@ -83,14 +83,16 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 </div>
                 <input type="submit" value="Cadastrar" class="btn btn-primary">
                 <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
-
+                <a class="btn btn-secondary" href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_USUARIOS/consultaUsuarios.php">
+                    Consultar Usuários Cadastrados
+                </a>
 
         </form>
     </div>
 
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
 
 </html>

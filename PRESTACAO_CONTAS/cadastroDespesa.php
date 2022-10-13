@@ -1,5 +1,9 @@
 <meta charset="UTF-8">
 <?php
+session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+    header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -37,25 +41,7 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript" language="javascript">
-        $(document).ready(function() {
-            $('#tabela').DataTable({
-                "lengthChange": false,
-                "language": {
-                    lengthMenu: 'Mostrando _MENU_ records per page',
-                    zeroRecords: 'Nada Encontrado',
-                    info: 'Mostrando Página _PAGE_ de _PAGES_',
-                    infoEmpty: 'Nenhum Registro Dispinível',
-                    infoFiltered: '(filtrado de _MAX_ Registros no Total)',
-                    "url": "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Portuguese-Brasil.json"
-                }
-            });
-        });
-    </script>
+    
     <title>Pretação de Contas</title>
     <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 </head>
@@ -123,15 +109,20 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     </tr>
             </table>
 
-            <?php foreach ($resultadoTotal as $row) {  ?>
-            <label for="total">Total </label>
-               <input name="total" type="text" readonly value="<?php echo $row['total']  ?>">
-            <?php } ?>
+            <?php //foreach ($resultadoTotal as $row) {  
+            ?>
+            <!-- <label for="total">Total das Despesas </label>
+               <input name="total" type="text" readonly value="<?php // $row['total']  
+                                                                ?>">
+            <? //php// } 
+            ?>-->
 
         </div>
     </div>
 
-
+    
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>
 
 </html>
