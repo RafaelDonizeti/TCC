@@ -37,19 +37,15 @@ $resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 </head>
 
 <body>
+    <div class="position-absolute top-50 start-50 translate-middle">
     <form action="atualiza_imovel.php" method="get">
-
-
         <?php foreach ($resultadoIM as $row) { ?>
-
-            <div class="col-md-6">
+            <div class="col-md-12">
                 <div>
-                    <h5>Alterar Dados do Imóvel</h5><br />
-
-
+                    <h1>Alterar Dados do Imóvel</h1><br />
                     <input type="hidden" name="id" value=<?php echo $row['id_imovel']; ?>>
-
                     <label> Número:</label>
+
                     <input type="text" name="numero" value="<?php echo $row['numero_imovel']; ?>" class="form-control">
 
                     <label> Bloco: </label> <br />
@@ -60,14 +56,14 @@ $resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <?php foreach ($resultadob as $row) { ?>
                             <option value="<?php echo $row['id_bloco'] ?>"> <?php echo $row['bloco'] ?> </option>
                         <?php     } ?>
-                    </select> <br>
+                    </select> 
 
 
                 <?php     } ?>
 
                 <?php foreach ($resultadoIM as $row) { ?>
 
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                         <div>
                             <label> Situação: </label> <br />
                             <select name="situacao" class="form-select">
@@ -85,6 +81,11 @@ $resultados = $results->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 </div><br>
 
                 <input type="submit" value="Atualizar" class="btn btn-success">
-
+                <a href="/Aulasphp/TCC/CADASTROS/CADASTROS_DE_IMOVEIS/cadastroImovel.php">
+                <button class=" btn btn-danger">Voltar </button>
+            </a>
             </div>
     </form>
+
+    </div>
+</body>

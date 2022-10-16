@@ -22,7 +22,7 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 <head>
     <meta charset="utf-8" />
-    <title> Consulta de Usuários </title>
+    <title> Editar Agendamento </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
@@ -46,36 +46,37 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 </head>
 
 <body>
-    <form action="atualizaAgendamento.php" method="get">
+    <div class="position-absolute top-50 start-50 translate-middle">
+        <form action="atualizaAgendamento.php" method="get">
+            <?php foreach ($resultado as $row) { ?>
 
+                <div class="col-md-12">
+                    <div>
+                        <h1> Editar Agendamento</h1> <br />
+                        <label> Local:</label>
+                        <select name="locais" class="form-select">
 
-        <?php foreach ($resultado as $row) { ?>
+                            <option value="<?php echo $row['id_local']; ?> "><?php echo $row['nome_local']; ?></option>
+                            <?php foreach ($resultadol as $row) { ?>
+                                <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
+                            <?php     } ?>
+                            <?php foreach ($resultado as $row) { ?>
+                                <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
+                            <?php     } ?>
+                        </select>
 
-            <div class="col-md-6">
-                <div>
-                    <label> INFORME QUAL O LOCAL</label> <br />
-                    <label> Local:</label>
-                    <select name="locais" class="form-select">
+                        <label> Data:</label>
+                        <input type="text" class="form-control" name="data_agendamento" id="calendar" value="<?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?>">
 
-                        <option value="<?php echo $row['id_local']; ?> "><?php echo $row['nome_local']; ?></option>
-                        <?php foreach ($resultadol as $row) { ?>
-                            <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
-                        <?php     } ?>
-                        <?php foreach ($resultado as $row) { ?>
-                            <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
-                        <?php     } ?>
-                    </select>
-
-                    <label> Data:</label>
-                    <input type="text" class="form-control" name="data_agendamento" id="calendar" value="<?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?>">
-
+                    </div><br>
+                    <input type="submit" value="Atualizar" class="btn btn-success">
                 </div>
-            </div>
-        <?php     } ?>
-        </div><br>
-        <input type="hidden" name="id" value=<?php echo $row['id_agendamento']; ?>>
-        <input type="submit" value="Atualizar" class="btn btn-success">
+            <?php     } ?>
+    </div><br>
+    <input type="hidden" name="id" value=<?php echo $row['id_agendamento']; ?>>
 
-        </div>
+
+    </div>
     </form>
+    </div>
 </body>

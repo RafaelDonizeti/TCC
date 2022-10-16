@@ -52,7 +52,6 @@ $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <div class="row">
         <div class="col-md-4">
             <form name="Cadastro " method="GET" action="cadastrarImovel.php">
-
                 <div class="ms-5 mt-5">
                     <h3> INFORME OS DADOS DO IMÓVEL : </h3>
                     <label> Número: </label> <br />

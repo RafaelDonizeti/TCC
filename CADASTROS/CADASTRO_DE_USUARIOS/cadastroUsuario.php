@@ -35,13 +35,18 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 <body>
 
     <div class="container mt-5">
-        <form name="" method="GET" action="cadastrarUsuario.php">
+        <form name="" method="get" action="cadastrarUsuario.php">
             <div class="container">
                 <?php
                 if (isset($_SESSION['status'])) {
                     echo $_SESSION['status'];
                     unset($_SESSION['status']);
-                } ?>
+                } 
+                if (isset($_SESSION['statusem'])) {
+                    echo $_SESSION['statusem'];
+                    unset($_SESSION['statusem']);
+                } 
+                ?>
                 <h3>INFORME OS DADOS DO USUÁRIO</h3>
                 <div class="row">
                     <div class="col-md-6">
@@ -77,7 +82,7 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         </select>
                         <br>
                         <label> Senha: </label> <br />
-                        <input type="text" class="form-control border-secondary" name="senha" required> <br />
+                        <input type="password" class="form-control border-secondary" name="senha" required> <br />
                     </div>
 
                 </div>

@@ -9,7 +9,11 @@ if ((!$con)) {
 }
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_tipo_usuario, id_usuario, nome_usuario, telefone_usuario,email_usuario,tipo_usuario_fk,id_imovel_fk,tipo_usuario,numero_imovel from usuarios inner join tipos_usuarios on tipo_usuario_fk = id_tipo_usuario inner join imoveis on id_imovel_fk = id_imovel where id_usuario = $id_usuario"; // Expressão SQL que irá ser executada
+$query = "SELECT id_tipo_usuario, id_usuario, nome_usuario, telefone_usuario,email_usuario,tipo_usuario_fk,id_imovel_fk,tipo_usuario,numero_imovel,id_imovel
+from usuarios 
+inner join tipos_usuarios on tipo_usuario_fk = id_tipo_usuario 
+inner join imoveis on id_imovel_fk = id_imovel 
+where id_usuario = $id_usuario"; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
@@ -39,7 +43,7 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 </head>
 
 <body>
-	<form method="GET " action="atualizaUsuario.php">
+	<form method="GET" action="atualizaUsuario.php">
 		<div class="container mt-5">
 			<div class="row">
 				<h1> ALTERAR DADOS DO USUÁRIO </h1>
@@ -71,11 +75,11 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 							<label> Imóvel:</label>
 							<select name="imovel" class="form-select">
 
-								<option > <?php echo $row['numero_imovel'] ?></option>
-								
-									<?php foreach ($resultadoNI as $rowNI) { ?>
-								<option value="<?php echo $rowNI['id_imovel'] ?>"> <?php echo $rowNI['numero_imovel'] ?> </option>
-							<?php     } ?>
+								<option value="<?php echo $row['id_imovel'] ?>"> <?php echo $row['numero_imovel'] ?></option>
+
+								<?php foreach ($resultadoNI as $rowNI) { ?>
+									<option value="<?php echo $rowNI['id_imovel'] ?>"> <?php echo $rowNI['numero_imovel'] ?> </option>
+								<?php     } ?>
 
 							</select>
 
