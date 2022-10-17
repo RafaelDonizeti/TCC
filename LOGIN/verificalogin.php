@@ -1,8 +1,8 @@
 <?php
 session_start();
-$email = $_GET["email"];
-$senha = $_GET["senha"];
-
+$email = $_POST["email"];
+$senha = $_POST["senha"];
+$senha = md5($senha);
 
 $con = mysqli_connect ( "localhost", "root","","tcc");
 

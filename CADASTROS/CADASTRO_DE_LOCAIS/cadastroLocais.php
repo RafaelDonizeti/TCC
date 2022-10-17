@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -44,7 +48,7 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <label> Nome do Local:</label> <br />
             <input type="text" class="form-control border border-1 border-secondary" name="nome_local" autocomplete="off"> <br />
             <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
+            <a class="btn btn-danger" href="/Aulasphp/TCC/HOME_CADASTROS/homeCadastros.php">Voltar</a>
           </div>
 
         </div>

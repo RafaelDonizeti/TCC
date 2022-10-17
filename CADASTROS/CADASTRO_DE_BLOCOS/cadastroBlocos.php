@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -42,7 +46,7 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <label> Nome do Bloco: </label> <br />
             <input type="text" class="form-control border border-1 border-secondary" name="bloco"> <br />
             <input type="submit" value="Cadastrar" class="btn btn-primary">
-            <input type="reset" value="Limpar" class="btn btn-danger">
+            <input type="reset" value="Cancelar" class="btn btn-danger" formnovalidate>
           </div>
 
         </div>

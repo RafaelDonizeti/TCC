@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -25,9 +29,6 @@ $queryUsers = "SELECT id_usuario, nome_usuario from usuarios "; // Expressão SQ
 $resultUsers = mysqli_query($con, $queryUsers); // Executa a consulta com base na query
 $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -57,7 +58,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     </script>
     <title>Agendamentos </title>
 
-    
+
 
 
 </head>
@@ -117,7 +118,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <td><?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?> </td>
                         <td><?php echo ucwords($row['nome_usuario']); ?> </td>
                         <td><a href="editaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>"> Editar </a> </td>
-                        
+
                         <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class="text-danger"> Deletar </a> </td>
                     <?php     } ?>
 

@@ -1,5 +1,8 @@
 <?php
 session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -54,7 +57,7 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <input type="text" class="form-control border-secondary" name="nome" required> <br />
 
                         <label> Telefone: </label> <br />
-                        <input type="text" class="form-control border-secondary" name="telefone" maxlength="14" required> <br />
+                        <input type="number" class="form-control border-secondary" name="telefone" maxlength="14" required> <br />
 
                         <label> E-mail: </label> <br />
                         <input type="email" class="form-control border-secondary" name="email" required> <br />

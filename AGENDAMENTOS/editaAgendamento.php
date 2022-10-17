@@ -1,4 +1,8 @@
 <?php
+session_start();
+if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+}
 $id_agendamento = $_GET['id'];
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
@@ -16,6 +20,11 @@ $resultadol = array(); // Cria um array para receber o resultado
 $queryl = "SELECT id_local, nome_local from locais "; // Expressão SQL que irá ser executada
 $resultl = mysqli_query($con, $queryl); // Executa a consulta com base na query
 $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+
+$resultadoUsers = array(); // Cria um array para receber o resultado
+$queryUsers = "SELECT id_usuario, nome_usuario from usuarios "; // Expressão SQL que irá ser executada
+$resultUsers = mysqli_query($con, $queryUsers); // Executa a consulta com base na query
+$resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 ?>
 <!DOCTYPE html>
 <html lang="pt">
@@ -49,13 +58,12 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <div class="position-absolute top-50 start-50 translate-middle">
         <form action="atualizaAgendamento.php" method="get">
             <?php foreach ($resultado as $row) { ?>
-
                 <div class="col-md-12">
                     <div>
                         <h1> Editar Agendamento</h1> <br />
                         <label> Local:</label>
-                        <select name="locais" class="form-select">
-
+                        <input type="hidden" name="id" value=<?php echo $row['id_agendamento']; ?>>
+                        <select name="locais" class="form-select border border-secondary">
                             <option value="<?php echo $row['id_local']; ?> "><?php echo $row['nome_local']; ?></option>
                             <?php foreach ($resultadol as $row) { ?>
                                 <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
@@ -63,20 +71,29 @@ $resultadol = $resultl->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                             <?php foreach ($resultado as $row) { ?>
                                 <option value="<?php echo $row['id_local'] ?>"> <?php echo $row['nome_local'] ?> </option>
                             <?php     } ?>
-                        </select>
+                        </select><br>
 
                         <label> Data:</label>
-                        <input type="text" class="form-control" name="data_agendamento" id="calendar" value="<?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?>">
+                        <input type="text" class="form-control border border-secondary" name="data_agendamento" id="calendar" value="<?php echo date("d/m/Y", strtotime($row['data_agendamento'])); ?>"><br>
+
+                        <label>Quem Fará Uso? </label>
+                        <select name="usuarios" class="form-select border-secondary" required>
+                            <option value="">Selecione o Usuário</option>
+                            <?php foreach ($resultadoUsers as $row) { ?>
+                                <option value="<?php echo $row['id_usuario'] ?>"> <?php echo $row['nome_usuario'] ?> </option>
+                            <?php     } ?>
+                            </option>
+                        </select><br>
 
                     </div><br>
                     <input type="submit" value="Atualizar" class="btn btn-success">
+                    <a class="btn btn-danger" href="/Aulasphp/TCC/AGENDAMENTOS/homeAgendamentos.php"> Voltar</a>
                 </div>
             <?php     } ?>
+        </form>
     </div><br>
-    <input type="hidden" name="id" value=<?php echo $row['id_agendamento']; ?>>
+  
 
 
-    </div>
-    </form>
-    </div>
+
 </body>
