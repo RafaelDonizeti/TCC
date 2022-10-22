@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
-   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+    header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
 }
 $id_despesa = $_GET['id'];
 $con = mysqli_connect("localhost", "root", "", "tcc");
@@ -57,41 +57,38 @@ $resultadoC = $resultC->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 <body>
     <div class="position-absolute top-50 start-50 translate-middle">
-        <?php foreach ($resultado as $row) { ?>
-            <div class="row">
+        <form action="atualizaDespesa.php" method="get">
+            <?php foreach ($resultado as $row) { ?>
+
                 <div class="col-md-12">
-                    <form action="atualizaDespesa.php" method="get">
-
-                        <div class="ms-5 mt-5">
+                    <div class="">                      
+                        <div>
                             <h1>Editar Despesa</h1>
-                            <h3></h3>
-                            <div>
-                                <label> Despesa: </label> <br />
-                                <input type="text" class="form-control border border-1 border-secondary" name="despesa" value="<?php echo $row['despesa']; ?>"> <br />
-                                <input type="hidden" name="id" value=<?php echo $row['id_despesa']; ?>>
+                            <label> Despesa: </label> <br />
+                            <input type="text" class="form-control border border-1 border-secondary" name="despesa" value="<?php echo $row['despesa']; ?>"> <br />
+                            <input type="hidden" name="id" value=<?php echo $row['id_despesa']; ?>>
 
-                                <label> Valor: </label> <br />
-                                <input type="text" class="form-control border border-1 border-secondary" name="valor" value="<?php echo number_format($row['valor_despesa'], 2, ',', '.'); ?>"> <br />
+                            <label> Valor: </label> <br />
+                            <input type="text" class="form-control border border-1 border-secondary" name="valor" value="<?php echo number_format($row['valor_despesa'], 2, ',', '.'); ?>"> <br />
 
 
-                                <label> Data: </label> <br />
-                                <input type="text" id="calendar" class="form-select border border-1 border-secondary" name="data" value="<?php echo date("d/m/Y", strtotime($row['data_despesa'])); ?>"> <br />
+                            <label> Data: </label> <br />
+                            <input type="text" id="calendar" class="form-select border border-1 border-secondary" name="data" value="<?php echo date("d/m/Y", strtotime($row['data_despesa'])); ?>"> <br />
 
-                                <label> Tipo: </label> <br />
-                                <select name="conta" class="form-select border border-1 border-secondary">
-                                    <option value="<?php echo $row['id_conta']; ?>"><?php echo $row['conta']; ?></option>
-                                    <?php foreach ($resultadoC as $row) { ?>
-                                        <option value="<?php echo $row['id_conta'] ?>"> <?php echo $row['conta'] ?> </option>
-                                    <?php     } ?>
-                                </select><br>
-                            </div>
-                            <input type="submit" value="Atualizar" class="btn btn-success">
-                            <a class="btn btn-danger" href="/Aulasphp/TCC/PRESTACAO_CONTAS/cadastroDespesa.php">Voltar</a>
+                            <label> Tipo: </label> <br />
+                            <select name="conta" class="form-select border border-1 border-secondary">
+                                <option value="<?php echo $row['id_conta']; ?>"><?php echo $row['conta']; ?></option>
+                                <?php foreach ($resultadoC as $row) { ?>
+                                    <option value="<?php echo $row['id_conta'] ?>"> <?php echo $row['conta'] ?> </option>
+                                <?php     } ?>
+                            </select><br>
                         </div>
-                    </form>
+                        <input type="submit" value="Atualizar" class="btn btn-success">
+                        <a class="btn btn-danger" href="/Aulasphp/TCC/PRESTACAO_CONTAS/cadastroDespesa.php">Voltar</a>
+                    </div>
                 </div>
-            </div>
-        <?php     } ?>
+            <?php     } ?>
+        </form>
 
     </div>
 

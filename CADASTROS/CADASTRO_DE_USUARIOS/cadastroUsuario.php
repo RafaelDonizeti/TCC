@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
-   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+    header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
 }
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
@@ -44,11 +44,11 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                 if (isset($_SESSION['status'])) {
                     echo $_SESSION['status'];
                     unset($_SESSION['status']);
-                } 
+                }
                 if (isset($_SESSION['statusem'])) {
                     echo $_SESSION['statusem'];
                     unset($_SESSION['statusem']);
-                } 
+                }
                 ?>
                 <h3>INFORME OS DADOS DO USUÁRIO</h3>
                 <div class="row">
@@ -57,12 +57,11 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                         <input type="text" class="form-control border-secondary" name="nome" required> <br />
 
                         <label> Telefone: </label> <br />
-                        <input type="number" class="form-control border-secondary" name="telefone" maxlength="14" required> <br />
+                        <input type="number" class="form-control border-secondary" name="telefone" required oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);" type="number" maxlength="11"> <br />
 
                         <label> E-mail: </label> <br />
                         <input type="email" class="form-control border-secondary" name="email" required> <br />
-
-
+                        
                     </div>
 
                     <div class="col-md-6">

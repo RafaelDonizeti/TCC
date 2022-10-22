@@ -27,6 +27,19 @@ where data_despesa between '$data_inicial' and '$data_final'
 order by data_despesa desc; "; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+$verificaresultado = mysqli_num_rows($result);
+
+if ($verificaresultado === 0){
+    echo 'Não existem registros nesse período';
+}
+
+$resultadoSD = array(); // soma despesa
+$querySD = "SELECT SUM(valor_despesa) as totald
+from despesas 
+inner join contas on id_conta_fk = id_conta
+where data_despesa between '$data_inicial' and '$data_final';";
+$resultSD = mysqli_query($con, $querySD);
+$resultadoSD = $resultSD->fetch_all(MYSQLI_ASSOC);
 
 ?>
 
@@ -58,8 +71,6 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     </tr>
                 </thead>
 
-
-
                 <?php foreach ($resultado as $row) { ?>
                     <tr>
 
@@ -71,10 +82,17 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <?php   } ?>
                     </tr>
             </table>
+            <label >Total das Despesas</label>
+            <?php
+            foreach ($resultadoSD as $rowsd) {
+                echo $rowsd['totald'];
+            }
+            ?><br>
             <a href="/Aulasphp/TCC/CONSULTAS/homeConsultas.php">
                 <button class="btn-danger">Voltar </button>
             </a>
         </div>
+
     </div>
 
 </body>

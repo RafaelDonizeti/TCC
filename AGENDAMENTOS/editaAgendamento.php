@@ -92,8 +92,4 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
             <?php     } ?>
         </form>
     </div><br>
-  
-
-
-
 </body>
