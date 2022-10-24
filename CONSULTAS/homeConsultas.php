@@ -38,36 +38,37 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 </head>
 
 <body>
-
+<h3 class="display-4 text-center mt-4"> Relatórios</h3>
     <div class="container text-center position-absolute top-50 start-50 translate-middle">
-    <div class="row">
-        <div class="card ms-5 border border-secondary" style="width: 18rem;">
-            <div class="card-body">
-                <br><br>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-                    Relatório de Despesas
-                </button><br><br>
-            </div>
-        </div><br>
+        
+        <div class="row">
+            <div class="card ms-5 border border-secondary" style="width: 18rem;">
+                <div class="card-body">
+                    <br><br>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        Relatório de Despesas
+                    </button><br><br>
+                </div>
+            </div><br>
 
-        <div class="card ms-5 border border-secondary" style="width: 18rem;">
-            <div class="card-body">
-                <br><br>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalimoveis">
-                    Relatório de Imóveis
-                </button><br><br>
-            </div>
-        </div><br>
+            <div class="card ms-5 border border-secondary" style="width: 18rem;">
+                <div class="card-body">
+                    <br><br>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalimoveis">
+                        Relatório de Imóveis
+                    </button><br><br>
+                </div>
+            </div><br>
 
-        <div class="card ms-5 border border-secondary" style="width: 18rem;">
-            <div class="card-body">
-                <br><br>
-                <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalagendamentos">
-                    Relatório de Agendamentos
-                </button>
+            <div class="card ms-5 border border-secondary" style="width: 18rem;">
+                <div class="card-body">
+                    <br><br>
+                    <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#modalagendamentos">
+                        Relatório de Agendamentos
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
     </div>
 
 

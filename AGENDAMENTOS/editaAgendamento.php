@@ -84,7 +84,6 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                             <?php     } ?>
                             </option>
                         </select><br>
-
                     </div><br>
                     <input type="submit" value="Atualizar" class="btn btn-success">
                     <a class="btn btn-danger" href="/Aulasphp/TCC/AGENDAMENTOS/homeAgendamentos.php"> Voltar</a>

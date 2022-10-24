@@ -41,7 +41,7 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-    
+
     <title>Pretação de Contas</title>
     <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 </head>
@@ -50,10 +50,9 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     <div class="row">
         <div class="col-md-4">
             <form action="cadastrarDespesa.php" method="get">
-
                 <div class="ms-5 mt-5">
-                    <h3>PRESTAÇÃO DE</h3>
-                    <h3>CONTAS</h3>
+                    <h3 class="display-6 fs-3">PRESTAÇÃO DE</h3>
+                    <h3 class="display-6 fs-3">CONTAS</h3>
                     <div>
                         <label> Despesa: </label> <br />
                         <input type="text" class="form-control border border-1 border-secondary" name="despesa" required> <br />
@@ -94,11 +93,8 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     </tr>
                 </thead>
 
-
-
                 <?php foreach ($resultado as $row) { ?>
                     <tr>
-
                         <td><?php echo ucwords($row['despesa']); ?> </td>
                         <td><?php echo ucwords($row['conta']); ?> </td>
                         <td>R$ <?php echo number_format($row['valor_despesa'], 2, ',', '.'); ?> </td>
@@ -120,7 +116,7 @@ $resultadoTotal = $resultTotal->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         </div>
     </div>
 
-    
+
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
 </body>

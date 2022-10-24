@@ -20,7 +20,11 @@ inner join usuarios on id_usuario_fk = id_usuario
 where id_usuario = '$id_usuario' "; // Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+$verificaresultado = mysqli_num_rows($result);
 
+if ($verificaresultado === 0){
+    echo 'Nenhum registro encontrado';
+}
 ?>
 <head>
     <meta charset="UTF-8">

@@ -58,21 +58,15 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
     </script>
     <title>Agendamentos </title>
 
-
-
-
 </head>
 
 <body>
-
-
     <div class="row">
         <div class="col-md-4">
             <form action="cadastrarAgendamento.php" method="get">
 
                 <div class="ms-5 mt-5">
-                    <h3>AGENDE AQUI OS DIAS PARA</h3>
-                    <h3>USAR OS ESPAÇOS DO CONDOMÍNIO</h3>
+                    <h3 class="display-4 fs-3 ">AGENDE AQUI OS DIAS PARA USAR OS ESPAÇOS DO CONDOMÍNIO</h3>
                     <div>
                         <label> Informe o Local:</label> <br />
                         <select name="locais" class="form-select border-secondary" required>
@@ -103,14 +97,16 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
         </div>
 
         <div class="col mt-5 mx-5">
-            <table class="table table-bordered  ">
+            <table class="table table-bordered">
+                <thead>
                 <tr>
                     <th>Local</th>
                     <th>Dia agendado</th>
                     <th>Usuário </th>
-                    <th> </th>
-                    <th></th>
+                     <th></th>     
+                     <th></th>   
                 </tr>
+                </thead>
 
                 <?php foreach ($resultado as $row) { ?>
                     <tr>
@@ -121,12 +117,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
                         <td><a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaAgendamento.php?id=<?php echo $row['id_agendamento']; ?>';}" class="text-danger"> Deletar </a> </td>
                     <?php     } ?>
-
-
         </div>
-
-
-
 
         <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

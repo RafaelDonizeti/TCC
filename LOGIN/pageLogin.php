@@ -1,3 +1,7 @@
+<?php 
+session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="pt">
 
@@ -12,15 +16,20 @@
 
 <body>
     <div class="position-absolute top-50 start-50 translate-middle">
+        <?php 
+        if (isset($_SESSION['status'])) {
+            echo  $_SESSION['status'];
+            unset($_SESSION['status']);
+        }
+        ?>
         <form name="home" method="POST" action="verificalogin.php">
             <h1>Sistema WEB Para </h1>
-            <h1>Condomínios</h1>
+            <h1>Síndicos</h1>
             <label> E-mail : </label> <br />
             <input type="text" name="email" required class="form-control border-primary"> <br /><br />
 
             <label> Senha : </label> <br />
             <input type="password" name="senha" required class="form-control border-primary"> <br /><br />
-
             <input type="submit" class="btn btn-primary" value="Acessar">
         </form>
     </div>

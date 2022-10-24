@@ -50,8 +50,8 @@ $resultadoNI = $resultNI->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     unset($_SESSION['statusem']);
                 }
                 ?>
-                <h3>INFORME OS DADOS DO USUÁRIO</h3>
-                <div class="row">
+                <h3 class="display-6">INFORME OS DADOS DO USUÁRIO</h3>
+                <div class="row mt-5">
                     <div class="col-md-6">
                         <label> Nome: </label> <br />
                         <input type="text" class="form-control border-secondary" name="nome" required> <br />

@@ -15,32 +15,31 @@ if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == tru
 
    <?php include('/xampp/htdocs/Aulasphp/TCC/BASES/barra.php') ?>
 
-
-
 </head>
 
 <body>
 
 
-   <div class="container">
+   <div class="container mt-4 " >
+      <h1 class="display-4 text-center">Cadastros</h1>
       <div class="row">
 
          <div class="col d-flex justify-content-center">
-            <div class="card mt-5" style="width: 18rem;">
+            <div class="card mt-5 border border-secondary" style="width: 18rem;">
                <img class="w-25 p-3" src=images/add_icon.png class="card-img-top" alt="...">
                <div class="card-body">
                   <p class="card-text"></p>
-                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_USUARIOS/cadastroUsuario.php" class="btn btn-primary">Cadastrar Usuário</a>
+                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_USUARIOS/cadastroUsuario.php" class="btn btn-outline-primary">Cadastrar Usuário</a>
                </div>
             </div>
          </div>
 
          <div class="col col d-flex justify-content-center">
-            <div class="card mt-5" style="width: 18rem;">
+            <div class="card mt-5 border border-secondary" style="width: 18rem;">
                <img class="w-25 p-3" src=images/add_imovel.png class="card-img-top" alt="...">
                <div class="card-body">
                   <p class="card-text"></p>
-                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_IMOVEIS/cadastroImovel.php" class="btn btn-primary">Cadastrar Imóveis</a>
+                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_IMOVEIS/cadastroImovel.php" class="btn btn-outline-primary">Cadastrar Imóveis</a>
                </div>
             </div>
          </div>
@@ -49,29 +48,26 @@ if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == tru
 
       <div class="row">
          <div class="col d-flex justify-content-center">
-            <div class="card mt-5" style="width: 18rem;">
+            <div class="card mt-5 border border-secondary" style="width: 18rem;">
                <img class="w-25 p-3" src=images/add_bloco.png class="card-img-top" alt="...">
                <div class="card-body">
                   <p class="card-text"></p>
-                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_BLOCOS/cadastroBlocos.php" class="btn btn-primary">Cadastrar Blocos</a>
+                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_BLOCOS/cadastroBlocos.php" class="btn btn-outline-primary">Cadastrar Blocos</a>
                </div>
             </div>
          </div>
 
          <div class="col d-flex justify-content-center">
-            <div class="card mt-5" style="width: 18rem;">
+            <div class="card mt-5 border border-secondary" style="width: 18rem;">
                <img class="w-25 p-3" src=images/add_local.png class="card-img-top" alt="...">
                <div class="card-body">
                   <p class="card-text"></p>
-                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_LOCAIS/cadastroLocais.php" class="btn btn-primary">Cadastrar Locais</a>
+                  <a href="/Aulasphp/TCC/CADASTROS/CADASTRO_DE_LOCAIS/cadastroLocais.php" class="btn btn-outline-primary">Cadastrar Locais</a>
                </div>
             </div>
          </div>
-
       </div>
    </div>
-
-
 
    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>

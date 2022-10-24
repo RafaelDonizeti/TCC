@@ -42,8 +42,8 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
       <form action="cadastrarLocal.php" method="get">
 
         <div class="ms-5 mt-5">
-          <h3>CADASTRE AQUI OS LOCAIS</h3>
-          <h3>DO CONDOMÍNIO</h3>
+          <h3 class="display-6 fs-3">CADASTRE AQUI OS LOCAIS</h3>
+          <h3 class="display-6 fs-3">DO CONDOMÍNIO</h3>
           <div>
             <label> Nome do Local:</label> <br />
             <input type="text" class="form-control border border-1 border-secondary" name="nome_local" autocomplete="off"> <br />

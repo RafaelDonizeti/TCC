@@ -13,7 +13,7 @@ if ((!$con)) {
 
 // query para exibir os dados
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT descricao_recado, tipo_recado,data_recado,nome_usuario 
+$query = "SELECT id_recado,descricao_recado, tipo_recado,data_recado,nome_usuario 
 from mural_de_recados 
 INNER JOIN tipos_recados on tipo_recado_fk = id_tipo_recado 
 inner join usuarios on id_usuario_fk = id_usuario
@@ -44,10 +44,10 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 <body>
 
-  <h3 class="text-center mt-5">MURAL </h3>
+  <h3 class=" display-4 text-center mt-5">MURAL </h3>
   <!-- Button trigger modal -->
   <div class="text-center">
-    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+    <button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
       Fazer Publicação
     </button>
   </div>
@@ -92,7 +92,8 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
             <P><?php echo $row['descricao_recado']; ?></P>
 
-            <footer class="blockquote-footer"><?php echo $row['nome_usuario'] ?></footer>
+            <footer class="blockquote-footer"><?php echo $row['nome_usuario']."<br>"."Postado em:"." ".date("d/m/Y", strtotime($row['data_recado'])) ?></footer>
+            <a href="editaRecado.php?id=<?php echo $row['id_recado']; ?>"> Editar </a>
           </blockquote>
         </div>
       </div>

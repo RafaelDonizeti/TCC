@@ -28,5 +28,8 @@ $con = mysqli_connect ( "localhost", "root","","tcc");
 	} else{
 		unset($_SESSION['email']);
 		unset($_SESSION['senha']);
-		echo"usuario ou senha incorretos";
+		 
+
+		$_SESSION['status'] = "Usuário ou senha incorretos";
+		header("Location: pageLogin.php");
 	}

@@ -82,14 +82,14 @@ $resultadoSD = $resultSD->fetch_all(MYSQLI_ASSOC);
                     <?php   } ?>
                     </tr>
             </table>
-            <label >Total das Despesas</label>
+            <label >Total das Despesas no Período:</label>
             <?php
             foreach ($resultadoSD as $rowsd) {
-                echo $rowsd['totald'];
+                echo "R$".  $rowsd['totald'];
             }
-            ?><br>
+            ?><br><br>
             <a href="/Aulasphp/TCC/CONSULTAS/homeConsultas.php">
-                <button class="btn-danger">Voltar </button>
+                <button class="btn btn-danger sm">Voltar </button>
             </a>
         </div>
 
