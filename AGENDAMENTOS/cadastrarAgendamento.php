@@ -1,6 +1,5 @@
 <?php
-//alterar o método para post futuramente
-// falta inserir data no banco
+
 $con = mysqli_connect ( "localhost", "root","","tcc");
 
 $local = $_GET["locais"];

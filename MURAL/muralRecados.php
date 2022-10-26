@@ -2,7 +2,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
-   header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+   header('location: /Aulasphp/TCC/LOGIN/pageLogin.php');
 }
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
@@ -27,7 +27,6 @@ $resultTR = mysqli_query($con, $queryTR); // Executa a consulta com base na quer
 $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 ?>
-
 
 <!DOCTYPE html>
 <html lang="pt">
@@ -70,7 +69,7 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
               <?php     } ?>
             </select><br>
             <label> Recado:</label>
-            <textarea name="recado" class="form-control" cols="" rows="12" required></textarea>
+            <textarea name="recado" class="form-control" cols="" rows="12" required maxlength="1330"></textarea>
 
         </div>
         <div class="modal-footer">
@@ -94,6 +93,7 @@ $resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
             <footer class="blockquote-footer"><?php echo $row['nome_usuario']."<br>"."Postado em:"." ".date("d/m/Y", strtotime($row['data_recado'])) ?></footer>
             <a href="editaRecado.php?id=<?php echo $row['id_recado']; ?>"> Editar </a>
+            <a href="javascript:if(confirm('Deseja excluir esse registro?')) {location='deletaRecado.php?id=<?php echo $row['id_recado']; ?>';}" class="text-danger p-3"> Deletar </a> </td>
           </blockquote>
         </div>
       </div>

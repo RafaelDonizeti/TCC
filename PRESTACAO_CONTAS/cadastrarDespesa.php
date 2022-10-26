@@ -1,5 +1,4 @@
 <?php
-//alterar o método para post futuramente
 
 
 $despesa = $_GET["despesa"];

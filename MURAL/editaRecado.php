@@ -1,9 +1,9 @@
 <?php
 session_start();
 if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
-    header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+    header('location: /Aulasphp/TCC/LOGIN/pageLogin.php');
 }
-$id_agendamento = $_GET['id'];
+$id_recado = $_GET['id'];
 $con = mysqli_connect("localhost", "root", "", "tcc");
 
 if ((!$con)) {
@@ -11,10 +11,13 @@ if ((!$con)) {
         mysqli_connect_errno();
 }
 
-$id_recado = $_GET['id'];
+$resultadoTR = array(); // Cria um array para receber o resultado
+$queryTR = "SELECT id_tipo_recado, tipo_recado from tipos_recados "; // Expressão SQL que irá ser executada
+$resultTR = mysqli_query($con, $queryTR); // Executa a consulta com base na query
+$resultadoTR = $resultTR->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_recado,descricao_recado, tipo_recado,data_recado,nome_usuario 
+$query = "SELECT id_tipo_recado,id_recado,descricao_recado, tipo_recado,data_recado,nome_usuario 
 from mural_de_recados 
 INNER JOIN tipos_recados on tipo_recado_fk = id_tipo_recado 
 inner join usuarios on id_usuario_fk = id_usuario
@@ -38,13 +41,28 @@ $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 <body>
 
-    <div class="container">
-        <?php foreach ($resultado as $row) { ?>
 
-      <input type="text" class="form-control" value="<?php echo $row['descricao_recado']; ?>">
+    <form action="atualizaRecado.php" method="get">
 
-        <?php     } ?>
-    </div>
+        <div class="container mt-5">
+
+            <label> Recado:</label><br>
+            <?php foreach ($resultado as $row) { ?>
+                <select name="tipos" id="" class="form-select">
+                    <option value="<?php echo $row['id_tipo_recado'] ?>"> <?php echo $row['tipo_recado'] ?> </option>
+                    <?php foreach ($resultadoTR as $rowTR) { ?>
+                        <option value="<?php echo $rowTR['id_tipo_recado'] ?>"><?php echo $rowTR['tipo_recado'] ?></option>
+                    <?php     } ?>
+                </select><br>
+
+                <textarea class="form-control" maxlength="1330" cols="30" rows="10" name="recado"><?php echo $row['descricao_recado']; ?></textarea>
+            <?php     } ?><br>
+
+            <input type="hidden" name="id" value=<?php echo $row['id_recado']; ?>>
+            <input type="submit" value="Atualizar" class="btn btn-success">
+            <a class="btn btn-danger" href="/Aulasphp/TCC/MURAL/muralRecados.php"> Voltar</a>
+        </div>
+    </form>
 
 </body>
 

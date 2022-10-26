@@ -1,7 +1,7 @@
 <?php
 session_start();
 if ((!isset($_SESSION['email']) == true) and  (!isset($_SESSION['senha']) == true)) {
-    header('location: /Aulasphp/TCC/LOGIN/pageLogin.html');
+    header('location: /Aulasphp/TCC/LOGIN/pageLogin.php');
 }
 $id_despesa = $_GET['id'];
 $con = mysqli_connect("localhost", "root", "", "tcc");

@@ -1,6 +1,4 @@
 <?php
-//alterar o método para post futuramente
-
 
 $bloco = $_GET["bloco"];
 
