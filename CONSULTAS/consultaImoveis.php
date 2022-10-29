@@ -21,7 +21,7 @@ $resultIM = mysqli_query($con, $queryIM); // Executa a consulta com base na quer
 $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 $verificaresultado = mysqli_num_rows($resultIM);
 
-if ($verificaresultado === 0){
+if ($verificaresultado === 0) {
     echo 'Nenhum registro encontrado';
 }
 ?>
@@ -34,20 +34,23 @@ if ($verificaresultado === 0){
     <meta charset="utf-8" />
     <title> Cadastro de Imóvel </title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="print" href="ocultarElementos.css" />
 
 </head>
 
 <body>
-    
+    <h1 class="display-5 text-center mt-5"> Relatório de Imóveis</h1>
     <div class="col mt-5 mx-5">
         <table class="table table-bordered">
-            <tr>
+            <thead>
+                <tr>
 
-                <th>NÚMERO</th>
-                <th>BLOCO</th>
-                <th>SITUAÇÃO</th>
+                    <th>NÚMERO</th>
+                    <th>BLOCO</th>
+                    <th>SITUAÇÃO</th>
 
-            </tr>
+                </tr>
+            </thead>
 
             <?php foreach ($resultadoIM as $row) { ?>
                 <tr>
@@ -60,6 +63,9 @@ if ($verificaresultado === 0){
                 </tr>
 
         </table>
+        <div class="formulario">
+            <input type="button" value="Gerar PDF" onclick=" window.print();" class="btn btn-secondary sm ">
+        </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>

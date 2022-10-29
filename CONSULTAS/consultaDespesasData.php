@@ -29,7 +29,7 @@ $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 $verificaresultado = mysqli_num_rows($result);
 
-if ($verificaresultado === 0){
+if ($verificaresultado === 0) {
     echo 'Não existem registros nesse período';
 }
 
@@ -50,15 +50,16 @@ $resultadoSD = $resultSD->fetch_all(MYSQLI_ASSOC);
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório de Despesas</title>
+    <title></title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="print" href="ocultarElementos.css" />
 
 </head>
 
 <body>
     <div class="row">
 
-
+        <h1 class="display-5 text-center mt-5"> Relatório de Despesas</h1>
         <div class="table-responsive col mt-4 mx-5">
             <table class="table table-bordered " id="tabela">
                 <thead>
@@ -82,15 +83,16 @@ $resultadoSD = $resultSD->fetch_all(MYSQLI_ASSOC);
                     <?php   } ?>
                     </tr>
             </table>
-            <label >Total das Despesas no Período:</label>
+            <label>Total das Despesas no Período:</label>
             <?php
             foreach ($resultadoSD as $rowsd) {
-                echo "R$".  $rowsd['totald'];
+                echo "R$" .  $rowsd['totald'];
             }
             ?><br><br>
-            <a href="/Aulasphp/TCC/CONSULTAS/homeConsultas.php">
-                <button class="btn btn-danger sm">Voltar </button>
-            </a>
+            <div class="formulario">
+               
+                <input type="button" value="Gerar PDF" onclick=" window.print();" class="btn btn-secondary sm ">
+            </div>
         </div>
 
     </div>
