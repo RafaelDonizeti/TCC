@@ -10,14 +10,18 @@ if ((!$con)) {
         mysqli_connect_errno();
 }
 
-$id_usuario = $_GET['usuarios'];
+$id_usuario = $_POST['usuarios'];
 
 $resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_usuario, id_local, nome_local,data_agendamento,id_agendamento, nome_usuario
+$query = 
+
+"SELECT id_usuario, id_local, nome_local,data_agendamento,id_agendamento, nome_usuario
 from locais 
 inner join agendamentos on id_local = id_local_fk
 inner join usuarios on id_usuario_fk = id_usuario
-where id_usuario = '$id_usuario' "; // Expressão SQL que irá ser executada
+where id_usuario = '$id_usuario' "; 
+
+// Expressão SQL que irá ser executada
 $result = mysqli_query($con, $query); // Executa a consulta com base na query
 $resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 $verificaresultado = mysqli_num_rows($result);

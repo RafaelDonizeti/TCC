@@ -10,13 +10,18 @@ if ((!$con)) {
         mysqli_connect_errno();
 }
 
-$id_situacao = $_GET['situacao'];
+$id_situacao = $_POST['situacao'];
 
 $resultadoIM = array(); // Cria um array para receber o resultado
-$queryIM = "SELECT id_imovel, numero_imovel,bloco, situacao_imovel,id_situacao_fk from imoveis 
+$queryIM = 
+
+"SELECT id_imovel, numero_imovel,bloco, situacao_imovel,id_situacao_fk 
+from imoveis 
 inner join situacoes_imoveis on id_situacao_fk = id_situacao_imovel
 inner join blocos on id_bloco_fk = id_bloco 
-where id_situacao_fk = '$id_situacao'"; // Expressão SQL que irá ser executada
+where id_situacao_fk = '$id_situacao'"; 
+
+// Expressão SQL que irá ser executada
 $resultIM = mysqli_query($con, $queryIM); // Executa a consulta com base na query
 $resultadoIM = $resultIM->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 $verificaresultado = mysqli_num_rows($resultIM);

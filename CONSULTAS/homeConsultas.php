@@ -39,7 +39,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
 
 <body>
 <h3 class="display-4 text-center mt-4"> Relatórios</h3>
-    <div class="container text-center position-absolute top-50 start-50 translate-middle">
+    <div class="container text-center position-absolute top-50 start-50 translate-middle ms-5">
         
         <div class="row">
             <div class="card ms-5 border border-secondary" style="width: 18rem;">
@@ -81,7 +81,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Despesas</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/Aulasphp/TCC/CONSULTAS/consultaDespesasData.php" method="get">
+                <form action="/Aulasphp/TCC/CONSULTAS/consultaDespesasData.php" method="post">
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
@@ -113,7 +113,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Imóveis</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/Aulasphp/TCC/CONSULTAS/consultaImoveis.php" method="get">
+                <form action="/Aulasphp/TCC/CONSULTAS/consultaImoveis.php" method="post">
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">
@@ -149,7 +149,7 @@ $resultadoUsers = $resultUsers->fetch_all(MYSQLI_ASSOC); // Faz uma associação
                     <h1 class="modal-title fs-5" id="exampleModalLabel">Agendamentos</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="/Aulasphp/TCC/CONSULTAS/consultaAgendamentosNome.php" method="get">
+                <form action="/Aulasphp/TCC/CONSULTAS/consultaAgendamentosNome.php" method="post">
                     <div class="modal-body">
                         <div class="container-fluid">
                             <div class="row">

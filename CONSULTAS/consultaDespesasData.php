@@ -11,22 +11,26 @@ if ((!$con)) {
 }
 
 
-$data_inicial = $_GET['data_inicial'];
-$data_final = $_GET['data_final'];
+$data_inicial = $_POST['data_inicial'];
+$data_final = $_POST['data_final'];
 
 if ($data_inicial > $data_final) {
     echo "A data inicial não pode ser maior que a data final ";
 }
 
 
-$resultado = array(); // Cria um array para receber o resultado
-$query = "SELECT id_despesa, despesa, valor_despesa, data_despesa, id_conta_fk,conta
+$resultado = array(); 
+$query = 
+
+"SELECT id_despesa, despesa, valor_despesa, data_despesa, id_conta_fk,conta
 from despesas 
 inner join contas on id_conta_fk = id_conta
 where data_despesa between '$data_inicial' and '$data_final' 
-order by data_despesa desc; "; // Expressão SQL que irá ser executada
-$result = mysqli_query($con, $query); // Executa a consulta com base na query
-$resultado = $result->fetch_all(MYSQLI_ASSOC); // Faz uma associação
+order by data_despesa desc; "; 
+
+
+$result = mysqli_query($con, $query); 
+$resultado = $result->fetch_all(MYSQLI_ASSOC);
 $verificaresultado = mysqli_num_rows($result);
 
 if ($verificaresultado === 0) {
@@ -57,46 +61,41 @@ $resultadoSD = $resultSD->fetch_all(MYSQLI_ASSOC);
 </head>
 
 <body>
-    <div class="row">
+    <h1 class="display-5 text-center mt-5"> Relatório de Despesas</h1>
+    <div class="table-responsive col mt-4 mx-5">
+        <table class="table table-bordered " id="tabela">
+            <thead>
+                <tr>
+                    <th>DESPESA</th>
+                    <th>TIPO</th>
+                    <th>VALOR </th>
+                    <th>DATA </th>
 
-        <h1 class="display-5 text-center mt-5"> Relatório de Despesas</h1>
-        <div class="table-responsive col mt-4 mx-5">
-            <table class="table table-bordered " id="tabela">
-                <thead>
-                    <tr>
-                        <th>DESPESA</th>
-                        <th>TIPO</th>
-                        <th>VALOR </th>
-                        <th>DATA </th>
+                </tr>
+            </thead>
 
-                    </tr>
-                </thead>
+            <?php foreach ($resultado as $row) { ?>
+                <tr>
 
-                <?php foreach ($resultado as $row) { ?>
-                    <tr>
+                    <td><?php echo ucwords($row['despesa']); ?> </td>
+                    <td><?php echo ucwords($row['conta']); ?> </td>
+                    <td>R$ <?php echo number_format($row['valor_despesa'], 2, ',', '.'); ?> </td>
+                    <td><?php echo date("d/m/Y", strtotime($row['data_despesa'])); ?> </td>
 
-                        <td><?php echo ucwords($row['despesa']); ?> </td>
-                        <td><?php echo ucwords($row['conta']); ?> </td>
-                        <td>R$ <?php echo number_format($row['valor_despesa'], 2, ',', '.'); ?> </td>
-                        <td><?php echo date("d/m/Y", strtotime($row['data_despesa'])); ?> </td>
+                <?php   } ?>
+                </tr>
+        </table>
+        <label>Total das Despesas no Período:</label>
+        <?php
+        foreach ($resultadoSD as $rowsd) {
+            echo "R$" .  $rowsd['totald'];
+        }
+        ?><br><br>
+        <div class="formulario">
 
-                    <?php   } ?>
-                    </tr>
-            </table>
-            <label>Total das Despesas no Período:</label>
-            <?php
-            foreach ($resultadoSD as $rowsd) {
-                echo "R$" .  $rowsd['totald'];
-            }
-            ?><br><br>
-            <div class="formulario">
-               
-                <input type="button" value="Gerar PDF" onclick=" window.print();" class="btn btn-secondary sm ">
-            </div>
+            <input type="button" value="Gerar PDF" onclick=" window.print();" class="btn btn-secondary sm ">
         </div>
-
     </div>
-
 </body>
 
 </html>
